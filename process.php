@@ -27,7 +27,7 @@
           }
 
           // register user
-          $sql = "INSERT INTO students (username, password) VALUES ('$username', '$password')";
+          $sql = "INSERT INTO students (username, password, pin) VALUES ('$username', '$password', '$pin')";
 
           $results = mysqli_query($conn, $sql);
 
