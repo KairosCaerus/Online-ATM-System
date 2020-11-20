@@ -16,8 +16,17 @@ if (empty($_POST["money"])) {
 <HTML>
     <HEAD>
     <TITLE> Transfer</TITLE>
+    <link rel="stylesheet" href="style.css">
     </HEAD>
     <BODY>
+        <center>
+        <img src="BOR_Logo.png"
+         width="300" height="100"/>
+         <br>
+        </center>
+
+        <body style="background-color:rgb(244, 226, 198)">
+          
         <h1 class ="custom">Transfer Sheet</h1>
         <p>Where Would You Like To Transfer:</p>
         <form method="post">
@@ -27,7 +36,7 @@ if (empty($_POST["money"])) {
           Savings<br>
           <input type="radio" name="money" <?php if (isset($money) && $money=="creditcard") echo "checked";?> value="creditcard">
           Credit Card<br>
-          <p>How Much Would You Like To Transfer:</p>
+          <p>How much money would you like to transfer:</p>
           Transfer: <input type="number" id="transfer" name="transfer">
           <input type="submit" name="sumbit" value="Submit">
         </form>

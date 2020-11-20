@@ -1,7 +1,7 @@
 <HTML>
     <HEAD>
     <TITLE> Balance</TITLE>
-    <link rel="stylesheet" href="style.css" />
+      <link rel="stylesheet" href="style.css" />
     <STYLE>
         table, th, td {
           border: 1px solid black;
@@ -16,6 +16,18 @@
     </STYLE>
     </HEAD>
     <BODY>
+      <center>
+      <img src="BOR_Logo.png"
+       width="300" height="100"/>
+       <br>
+       The Bank of Rona has proudly been serving customers since 2020.
+      </center>
+        <body style="background-color:rgb(244, 226, 198)">
+
+        <h1> Your Account</h1>
+        <script>
+        alert("Welcome to Bank of Rona. Check out your account")
+        </script>
       <?php
         session_start();
         $_SESSION['banking'] = 327.10;
