@@ -30,11 +30,11 @@
         </script>
       <?php
         session_start();
-        $_SESSION['banking'] = 327.10;
-        $_SESSION['savings'] = 530.45;
+        $_SESSION['banking'] = 1000.00;
+        $_SESSION['savings'] = 1000.00;
         $_SESSION['creditcard'] = 0.00;
-        $banking = 327.10;
-        $savings = 530.45;
+        $banking = 1000.00;
+        $savings = 1000.00;
         $creditcard = 0.00;
 
       ?>
