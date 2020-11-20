@@ -1,2 +1,3 @@
-console.log("hello")
-alert("hello");
+function transfer() {
+  window.location.href = "transfer.html";
+}
