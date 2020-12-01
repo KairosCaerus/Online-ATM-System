@@ -15,13 +15,11 @@
     <br>
     <h1> Welcome Back! </h1>
     <h3>Sign-In:</h3>
-    <form action="Banking.html" method="post">
-      Username:<input type="text" name="username">
+      Username:<input type="text" name="username" id="user">
       <br>
-      Password:<input type="password" name="password">
+      Password:<input type="password" name="password" id="pass">
       <br>
-      <input type="submit" value="Sign-In">
-    </form>
+      <button type="button" name="button" onclick="fetchLogin()">Sign-In</button>
       <br>
     <form action = "registration.html" method = "post">
       <h1> Sign-Up Today with 3 Easy Steps: </h1>
@@ -30,9 +28,25 @@
       <input type = "submit" value = "Here">
       </h3>
     </form>
-    <script>
-    //alert("Welcome back to your account")
-    </script>
-
   </body>
+  <script>
+  async function fetchLogin(){
+    fetch('http://localhost:5000/users/login?' + new URLSearchParams({
+      "user" : user.value,
+      "pass" : pass.value
+    }), {method: 'GET'})
+    .then((test) => test.json())
+    .then((data) => {
+      checkLogin(data)
+    });
+  }
+
+  function checkLogin(data){
+    alert(data.message);
+    if (data.success){
+      window.location.href = "Banking.html";
+    }
+  }
+
+  </script>
 </html>
