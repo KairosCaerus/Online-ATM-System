@@ -71,7 +71,12 @@
         Pin Number:
         <input type = "password" name = "pin">
         <br>
-
+        First Name:
+        <input type = "text" name = "first">
+        <br>
+        Last Name:
+        <input type = "password" name = "last">
+        <br>
         <button onclick="createAcc()">Register</button>
 
       </form>
@@ -79,22 +84,16 @@
 
     <script>
     async function createAcc(){
-      fetch('http://localhost:5000/atm/login?' + new URLSearchParams({
+      fetch('http://localhost:5000/users/add?' + new URLSearchParams({
         "user" : username.value,
         "pass" : password.value,
+        "firstname" : first.value,
+        "lastname" : last.value,
         "pin" : pin.value
-      }), {method: 'GET'})
+      }), {method: 'POST'})
       .then((test) => test.json())
       .then((data) => {
-        checkLogin(data)
       });
-    }
-
-    function checkLogin(data){
-      alert(data[0].message);
-      if (data[0].success){
-        window.location.href = "Banking.html";
-      }
     }
     </script>
 
