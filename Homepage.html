@@ -8,30 +8,154 @@
     <body style="background-color:rgb(244, 226, 198)">
     <center>
 
-      <a href="Homepage.html">
+    <a href="Homepage.html">
     <img src="BOR_Logo.png"
      width="300" height="100"/> </a>
      <br>
      The Bank of Rona has proudly been serving customers since 2020.
     </center>
     <br>
-    <h1> Welcome Back! </h1>
 
 
-    <h3>Sign-In:</h3>
-      Username:<input type="text" name="username" id="user">
-      <br>
-      Password:<input type="password" name="password" id="pass">
-      <br>
-      <button type="button" name="button" onclick="fetchLogin()">Sign-In</button>
-      <br>
+    <head>
+      <style>
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
 
-      <h1> Sign-Up Today with 3 Easy Steps: </h1>
-      <h3> Don't have an account? Create your account
+      li {
+        float: left;
+      }
 
-      <a href="registration.html">here</a>
-    </form>
-  </body>
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover {
+        background-color: #111;
+      }
+      </style>
+    </head>
+    <body>
+
+      <ul>
+        <li><a class="active" href="Homepage.html">Home</a></li>
+        <li><a href="ATMStart.html">Online ATM</a></li>
+        <li><a href="FAQ page v1.html">FAQ</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </body>
+
+
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .column1 {
+      float: left;
+      width: 35%;
+      padding: 25px;
+      height: 250px; /* Should be removed. Only for demonstration */
+    }
+
+    .column2 {
+      float: left;
+      width: 65%;
+      padding: 40px;
+      height: 300px; /* Should be removed. Only for demonstration */
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    </style>
+    </head>
+    <body>
+
+
+      <h1> Welcome Back! </h1>
+    <div class="row">
+      <div class="column1" style="rgb(244, 226, 198)">
+        <div class="div1">
+        <h3>Sign-In:</h3>
+        Username:<input type="text" name="username" id="user">
+        <br>
+        Password:<input type="password" name="password" id="pass">
+        <br>
+        <button type="button" name="button" onclick="fetchLogin()">Sign-In</button>
+        <br>
+        <br>
+        Don't have an account? Create your account
+
+        <a href="registration.html">here</a>
+        </div>
+        <br>
+      </div>
+
+
+      <div class="column2" style="background-color: #bbb;">
+        <body>
+          <head>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+
+<style>
+.mySlides {display:none;}
+</style>
+</head>
+
+          <div class="w3-content w3-section" style="max-width:500px">
+            <img class="mySlides" src="BOR_Logo.png" style="width:100%">
+            <img class="mySlides" src="savings.png" style="width:100%">
+            <img class="mySlides" src="card.PNG" style="width:50%">
+          </div>
+
+          <script>
+            var myIndex = 0;
+            carousel();
+
+            function carousel() {
+              var i;
+              var x = document.getElementsByClassName("mySlides");
+              for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+              }
+              myIndex++;
+              if (myIndex > x.length) {myIndex = 1}
+              x[myIndex-1].style.display = "block";
+              setTimeout(carousel, 3000); // Change image every 2 seconds
+            }
+          </script>
+        </body>
+      </div>
+    </div>
+
+
+
+
+    <style>
+    .div1 {
+      width: 285px;
+      height: 200px;
+      border: 3px solid black;
+      box-sizing: border-box;
+    }
+    </style>
+
+
   <script>
   async function fetchLogin(){
     fetch('http://localhost:5000/users/login?' + new URLSearchParams({
