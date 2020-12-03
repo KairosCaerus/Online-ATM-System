@@ -116,49 +116,33 @@ body {font-family: Arial, Helvetica, sans-serif;}
   </script>
   <body onload ="checkCookies()">
 
-  <h1> Create a New Account</h1>
+  <h1> Close an Account</h1>
       <h3><i> Please enter the appropriate
         information below to proceed </i></h3>
       <br> <br>
-      Account Name:
-      <input type = "text" id = "accName">
+      Account ID:
+      <input type = "text" id = "accountID">
       <br> <br>
       Pin Number:
       <input type = "password" id = "pin">
       <br> <br>
 
-  <button type="button" onclick="createAccount()" name="button">Create New Account</button>
+  <button type="button" onclick="closeAccount()" name="button">Close Account</button>
 
 </body>
 
 <script>
-  async function createAccount(){
-    fetch('http://localhost:5000/users/accounts/new?' + new URLSearchParams({
-      "owner" : loggedInUser,
-      "name" : accName.value,
+  async function closeAccount(){
+    fetch('http://localhost:5000/users/accounts/close?' + new URLSearchParams({
+      "user" : loggedInUser,
+      "target" : accountID.value,
       "pin" : pin.value,
-    }), {method: 'POST'})
+    }), {method: 'DELETE'})
     .then((test) => test.json())
     .then((data) => {
       alert(data.message);
     });
   }
 </script>
-
-
-<!--- Hey I think the API is missing a delete account function
-<script>
-  async function deleteAccount(){
-    fetch('http://localhost:5000/users/login?' + new URLSearchParams({
-      "user" : user.value,
-      "pass" : pass.value
-    }), {method: 'GET'})
-    .then((test) => test.json())
-    .then((data) => {
-      checkLogin(data)
-    });
-  }
-</script>
--->
 
 </html>
