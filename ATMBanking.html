@@ -111,8 +111,16 @@
       <button onclick="transfer()">Transfer To Another Account</button>
       <br>
       <button onclick="support()">Help & Support</button>
-      <button onclick="logout()">Log Out</button>
+      <button onclick="logOut()">Log Out</button>
 
+      <script>
+      function logOut(){
+        document.cookie = "loggedin=false; path=/"
+        document.cookie = "user=; path=/"
+        window.location.href = "homepage.html"
+        alert("You have been logged out.")
+      }
+      </script>
       <script src="Script.js"></script>
 
     </BODY>
