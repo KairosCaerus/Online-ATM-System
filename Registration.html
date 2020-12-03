@@ -15,64 +15,100 @@
     </center>
     <br>
 
-    <head>
-      <style>
-      ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
-      }
-
-      li {
-        float: left;
-      }
-
-      li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-      }
-
-      li a:hover {
-        background-color: #111;
-      }
-      </style>
-    </head>
     <body>
-
       <ul>
         <li><a class="active" href="Homepage.html">Home</a></li>
         <li><a href="ATMStart.html">Online ATM</a></li>
         <li><a href="FAQ page v1.html">FAQ</a></li>
-        <li><a href="#about">About</a></li>
       </ul>
-
     </body>
+    <br>
 
+      <center>
+      <img src="registrationimage.png" width="900" height="200"/>
 
+       <style>
+        div {
+          background-color: lightgrey;
+          width: 450px;
+          border: 15px solid maroon;
+          padding: 50px;
+          margin: 20px;
+        }
+      </style>
 
+      <body>
+        <div>
+          <h1> Register Today</h1>
 
+<<<<<<< HEAD
+          <form action = "Banking.html" method = "post">
+              <h3> Don't have an account?
+                Create your account today! </h3>
+              Please enter a username, password, and pin number to set up your account
+              <br>
+              Username:
+              <input type = "text" name = "username">
+              <br>
+              Password:
+              <input type = "password" name = "password">
+              <br>
+              Pin Number:
+              <input type = "password" name = "pin">
+              <br>
+              <input type = "submit" value = "Register">
+        </form>
+        </div>
+      </body>
+      </center>
+=======
     <h1> Register Today</h1>
-
-    <form action = "Banking.html" method = "post">
         <h3> Don't have an account?
           Create your account today! </h3>
         <br>
         Username:
-        <input type = "text" name = "username">
+        <input type = "text" id = "username">
         <br>
         Password:
-        <input type = "password" name = "password">
+        <input type = "password" id = "password">
         <br>
         Pin Number:
-        <input type = "password" name = "pin">
+        <input type = "password" id = "pin">
         <br>
-        <input type = "submit" value = "Register">
-
-      </form>
+        First Name:
+        <input type = "text" id = "first">
+        <br>
+        Last Name:
+        <input type= "text" id = "last">
+        <br>
+        <button onclick="createAcc()">Register</button>
+>>>>>>> 8f0a9afaa3dd3d14c86ac207bb9a18fb724e861f
     </body>
+
+    <script>
+    async function createAcc(){
+      fetch('http://localhost:5000/users/add?' + new URLSearchParams({
+        "username" : username.value,
+        "password" : password.value,
+        "firstname" : first.value,
+        "lastname" : last.value,
+        "pin" : pin.value
+      }), {method: 'POST'})
+      .then((test) => test.json())
+      .then((data) => {
+        if (data.success){
+          registerSuccess(data);
+        }else{
+          alert(data.message);
+        }
+      });
+    }
+
+    function registerSuccess(data){
+      alert(data.message);
+      window.location.href = "Banking.html";
+      console.log("hey");
+    }
+    </script>
+
 </html>

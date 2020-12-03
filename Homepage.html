@@ -16,14 +16,8 @@
     </center>
     <br>
 
-      <style>
-
-
-    </style>
-
     </head>
     <body>
-
       <body>
 
         <ul>
@@ -46,9 +40,9 @@
         <button type="button" name="button" onclick="fetchLogin()">Sign-In</button>
         <br>
         <br>
-        Don't have an account? Create your account
+        Don't have an account? Sign-up
 
-        <a href="registration.html">here</a>
+        <a href="registration.html">today</a>
         </div>
         <br>
       </div>
@@ -149,8 +143,9 @@
   function checkLogin(data){
     alert(data.message);
     if (data.success){
-      window.location.href = "Banking.html";
-      document.cookie = "user="+user.value+";loggedin=true; path=/"
+      document.cookie = "user="+ user.value + "; path=/";
+      document.cookie = "loggedin=true; path=/";
+      window.location.href = "AccountManage.html";
     }
   }
 
