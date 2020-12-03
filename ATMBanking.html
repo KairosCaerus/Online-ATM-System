@@ -53,8 +53,9 @@
 
         function loadData(data){
           console.log(data);
-          document.getElementById("username").innerHTML = data[0]["owner"];
-          document.getElementById("bankingaccount").innerHTML = data[0]["accountID"];
+          document.getElementById("username").innerHTML = data[1]["owner"];
+          document.getElementById("accountID").innerHTML = data[1]["accountID"];
+          document.getElementById("balance").innerHTML = data[1]["balance"];
         }
 
       </script>
@@ -79,7 +80,7 @@
     <table style="width:60%">
         <tbody><tr>
           <th>Adv Plus Banking -  <span id="bankingaccount"></span> </th>
-          <td>$233.78</td>
+          <td><span id="balance"></span></td>
       </tbody></table>
       <br>
       <button onclick="account()">Open Up New Account</button>
