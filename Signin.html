@@ -29,5 +29,22 @@
       <script src="Script.js"></script>
   </body>
 
+  async function fetchLogin(){
+    fetch('http://localhost:5000/atm/login?' + new URLSearchParams({
+      "user" : user.value,
+      "pin" : pin.value
+    }), {method: 'GET'})
+    .then((test) => test.json())
+    .then((data) => {
+      checkLogin(data)
+    });
+  }
+
+  function checkLogin(data){
+    alert(data.message);
+    if (data.success){
+      window.location.href = "Banking.html";
+    }
+  }
 
 </html>
