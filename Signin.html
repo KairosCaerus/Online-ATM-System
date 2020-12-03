@@ -25,9 +25,27 @@
       <input type="text" id="UserID" name="UserID"> <br><br>
       <label for "PinNum">Pin:</label>
       <input type="text" id="PinNum" name="PinNum"> <br><br>
-      <button onclick="ATMLogin()">Submit</button>
+      <button onclick="fetchLogin()">Submit</button>
       <script src="Script.js"></script>
   </body>
+  <script>
+  async function fetchLogin(){
+    fetch('http://localhost:5000/atm/login?' + new URLSearchParams({
+      "user" : UserID.value,
+      "pin" : PinNum.value
+    }), {method: 'GET'})
+    .then((test) => test.json())
+    .then((data) => {
+      checkLogin(data)
+    });
+  }
 
+  function checkLogin(data){
+    alert(data[0].message);
+    if (data[0].success){
+      window.location.href = "Banking.html";
+    }
+  }
+  </script>
 
 </html>

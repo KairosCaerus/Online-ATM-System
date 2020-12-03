@@ -172,6 +172,7 @@
     alert(data.message);
     if (data.success){
       window.location.href = "Banking.html";
+      document.cookie = "user="+user.value+";loggedin=true; path=/"
     }
   }
 
