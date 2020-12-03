@@ -47,13 +47,13 @@
           }), {method: 'GET'})
           .then((test) => test.json())
           .then((data) => {
-            loadData(data)
+            document.getElementById("username").innerHTML = username;
+            loadData(data);
           });
         }
 
         function loadData(data){
           console.log(data);
-          document.getElementById("username").innerHTML = data[1]["owner"];
           var col = [];
           for (var i = 1; i < data.length; i++){
             for (var key in data[i]){
