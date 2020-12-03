@@ -71,8 +71,31 @@
         Pin Number:
         <input type = "password" name = "pin">
         <br>
-        <input type = "submit" value = "Register">
+
+        <button onclick="createAcc()">Register</button>
 
       </form>
     </body>
+
+    <script>
+    async function createAcc(){
+      fetch('http://localhost:5000/atm/login?' + new URLSearchParams({
+        "user" : username.value,
+        "pass" : password.value,
+        "pin" : pin.value
+      }), {method: 'GET'})
+      .then((test) => test.json())
+      .then((data) => {
+        checkLogin(data)
+      });
+    }
+
+    function checkLogin(data){
+      alert(data[0].message);
+      if (data[0].success){
+        window.location.href = "Banking.html";
+      }
+    }
+    </script>
+
 </html>
