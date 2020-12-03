@@ -86,8 +86,9 @@
 
     function registerSuccess(data){
       alert(data.message);
-      window.location.href = "Banking.html";
-      console.log("hey");
+      document.cookie = "user="+ username.value + "; path=/";
+      document.cookie = "loggedin=true; path=/";
+      window.location.href = "AccountManage.html";
     }
     </script>
 
