@@ -13,7 +13,7 @@
   if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
   }
-
+  
   // select user
   $sql = "SELECT password FROM students WHERE username = '$username'";
   //put a check here
@@ -40,6 +40,7 @@
     echo "Failed. Nothing was submitted.";
     }
   }
+
   ?>
 
   <html>
