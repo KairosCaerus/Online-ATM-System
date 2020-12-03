@@ -152,6 +152,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   }
 
   async function trasnsferCash(){
+    if(Number(amount.value) >= 0){
     fetch('http://localhost:5000/users/transfer?' + new URLSearchParams({
       "from" : source.value,
       "to" : target.value,
@@ -161,6 +162,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     .then((data) => {
       alert(data.message);
     });
+  }
   }
 </script>
 </html>

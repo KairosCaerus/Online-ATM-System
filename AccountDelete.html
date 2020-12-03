@@ -141,9 +141,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
     .then((test) => test.json())
     .then((data) => {
       alert(data.message);
-      document.cookie = "loggedin=false; path=/";
-      document.cookie = "user=; path=/";
-      window.location.href = "Homepage.html"
+      if(data.success){
+        document.cookie = "loggedin=false; path=/";
+        document.cookie = "user=; path=/";
+        window.location.href = "Homepage.html"
+      }
     });
   }}
 </script>

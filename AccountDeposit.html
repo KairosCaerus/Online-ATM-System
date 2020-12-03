@@ -26,17 +26,21 @@
 
 <script>
   async function depositCheck(){
-    if(myFile.value != "" && parseInt(amount.value) > 0 && AccountID.value != ""){
-      var file = new FormData();
-      file.append("file", myFile.files[0])
-      fetch('http://localhost:5000/users/deposit?' + new URLSearchParams({
-        "to" : AccountID.value,
-        "amount" : amount.value
-      }), {method: 'POST', body: file})
-      .then((test) => test.json())
-      .then((data) => {
-        alert(data.message)
-      });
+    if(isNaN(amount.value)){
+      alert("Input a valid amount.");
+    }else{
+      if(myFile.value != "" && Number(amount.value) >= 0 && AccountID.value != ""){
+        var file = new FormData();
+        file.append("file", myFile.files[0])
+        fetch('http://localhost:5000/users/deposit?' + new URLSearchParams({
+          "to" : AccountID.value,
+          "amount" : amount.value
+        }), {method: 'POST', body: file})
+        .then((test) => test.json())
+        .then((data) => {
+          alert(data.message)
+        });
+      }
     }
   }
 </script>

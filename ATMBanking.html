@@ -24,7 +24,7 @@
             if(pair[0].trim() == "loggedin"){
               if (pair[1].trim() != "true") {
                 alert("Error 404, Login not found. Please login again")
-                window.location.href = "Signin.html";
+                window.location.href = "ATMSignIn.html";
               }
               else{
                 for(var j = 0; j < cookArr.length; j++){
@@ -109,13 +109,13 @@
       <button onclick="window.location.href='ATMWithdraw.html'">Withdraw Cash</button>
       <button onclick="window.location.href='ATMTransfer.html'">Transfer Cash</button>
       <button onclick="logOut()">Log Out</button>
-      <button type="button" onclick="window.location.href='Signin.html'" name="button">Go Back</button>
+      <button type="button" onclick="window.location.href='ATMSignIn.html'" name="button">Go Back</button>
 
       <script>
       function logOut(){
         document.cookie = "loggedin=false; path=/"
         document.cookie = "user=; path=/"
-        window.location.href = "homepage.html"
+        window.location.href = "ATMStart.html"
         alert("You have been logged out.")
       }
       </script>
