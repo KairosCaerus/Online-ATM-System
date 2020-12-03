@@ -116,33 +116,51 @@ body {font-family: Arial, Helvetica, sans-serif;}
   </script>
   <body onload ="checkCookies()">
 
-  <h1> Create a New Account</h1>
+  <h1> Transfer Money to Another Account</h1>
       <h3><i> Please enter the appropriate
         information below to proceed </i></h3>
       <br> <br>
-      Account Name:
-      <input type = "text" id = "accName">
+      Source Account ID:
+      <input type = "text" id = "source">
       <br> <br>
-      Pin Number:
-      <input type = "password" id = "pin">
+      Recipent Account ID:
+      <input type = "text" id = "target">
+      <br> <br>
+      Amount:
+      <input type = "text" id = "amount">
       <br> <br>
 
-  <button type="button" onclick="createAccount()" name="button">Create New Account</button>
+  <button type="button" onclick="checkTransfer()" name="button">Transfer Money</button>
   <button type="button" onclick="window.location.href='AccountManage.html'" name="button">Go Back</button>
+
 </body>
 
 <script>
-  async function createAccount(){
-    fetch('http://localhost:5000/users/accounts/new?' + new URLSearchParams({
-      "owner" : loggedInUser,
-      "name" : accName.value,
-      "pin" : pin.value,
-    }), {method: 'POST'})
+  async function checkTransfer(){
+    fetch('http://localhost:5000/users/accounts/owns?' + new URLSearchParams({
+      "user" : loggedInUser,
+      "id" : source.value,
+    }), {method: 'GET'})
+    .then((test) => test.json())
+    .then((data) => {
+      if(data.success){
+        trasnsferCash();
+      }else{
+        alert(data.message);
+      }
+    });
+  }
+
+  async function trasnsferCash(){
+    fetch('http://localhost:5000/users/transfer?' + new URLSearchParams({
+      "from" : source.value,
+      "to" : target.value,
+      "cash" : amount.value,
+    }), {method: 'PUT'})
     .then((test) => test.json())
     .then((data) => {
       alert(data.message);
     });
   }
 </script>
-
 </html>
