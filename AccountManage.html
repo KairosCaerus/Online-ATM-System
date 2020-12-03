@@ -92,7 +92,15 @@
     <p id="dataTable"></p>
   <button type="button" onclick="window.location.href = 'AccountOpen.html'" name="button">Open New Account</button>
   <button type="button" onclick="window.location.href = 'AccountClose.html'" name="button">Close an Existing Account</button>
+  <button type="button" onclick="logOut()" name="button">Log Out</button>
 
 </body>
-
+<script>
+function logOut(){
+  document.cookie = "loggedin=false; path=/"
+  document.cookie = "user=; path=/"
+  window.location.href = "homepage.html"
+  alert("You have been logged out.")
+}
+</script>
 </html>
