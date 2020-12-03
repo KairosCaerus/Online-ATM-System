@@ -40,49 +40,30 @@
       <body>
         <div>
           <h1> Register Today</h1>
-
-
-          <form action = "Banking.html" method = "post">
               <h3> Don't have an account?
                 Create your account today! </h3>
-              Please enter a username, password, and pin number to set up your account
+              <br>
+              First Name:
+              <input type = "text" id = "first">
+              <br>
+              Last Name:
+              <input type= "text" id = "last">
               <br>
               Username:
-              <input type = "text" name = "username">
+              <input type = "text" id = "username">
               <br>
               Password:
-              <input type = "password" name = "password">
+              <input type = "password" id = "password">
               <br>
               Pin Number:
-              <input type = "password" name = "pin">
-              <br>
-              <input type = "submit" value = "Register">
-        </form>
+              <input type = "password" id = "pin">
+
+              <button onclick="createAcc()">Register</button>
+          </body>
         </div>
       </body>
       </center>
-=======
-    <h1> Register Today</h1>
-        <h3> Don't have an account?
-          Create your account today! </h3>
-        <br>
-        First Name:
-        <input type = "text" id = "first">
-        <br>
-        Last Name:
-        <input type= "text" id = "last">
-        <br>
-        Username:
-        <input type = "text" id = "username">
-        <br>
-        Password:
-        <input type = "password" id = "password">
-        <br>
-        Pin Number:
-        <input type = "password" id = "pin">
 
-        <button onclick="createAcc()">Register</button>
-    </body>
 
     <script>
     async function createAcc(){
