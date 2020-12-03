@@ -49,10 +49,10 @@
       }), {method: 'GET'})
       .then((test) => test.json())
       .then((data) => {
-        document.getElementById("username").innerHTML = username;
         loadData(data);
       });
     }
+    
     function loadData(data){
       console.log(data);
       var col = [];
@@ -83,6 +83,8 @@
       divContainer.appendChild(table);
     }
     </script>
+
+    <p id="dataTable"></p>
 
   <div id="button"><a href="AccountOpen.html">Create a New Account</a></div>
   <div id="button"><a href="AccountClose.html">Delete an Existing Account</a></div>

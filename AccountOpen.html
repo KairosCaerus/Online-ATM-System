@@ -92,6 +92,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   <body style="background-color:rgb(244, 226, 198)">
 
   <script>
+  var loggedInUser;
     function checkCookies() {
       var cookArr = document.cookie.split(';')
       for(var i = 0; i < cookArr.length; i++){
@@ -105,7 +106,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
             for(var j = 0; j < cookArr.length; j++){
               var pair2 = cookArr[j].split("=");
               if(pair2[0].trim() == "user"){
-                getData(pair2[1].trim());
+                loggedInUser = pair2[1].trim();
               }
             }
           }
@@ -118,11 +119,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
   <h1> Create a New Account</h1>
       <h3><i> Please enter the appropriate
         information below to proceed </i></h3>
-      <br>
-      Username:
-      <input type = "text" id = "owner">
       <br> <br>
-      Password:
+      Account Name:
       <input type = "text" id = "accName">
       <br> <br>
       Pin Number:
@@ -136,13 +134,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <script>
   async function createAccount(){
     fetch('http://localhost:5000/users/accounts/new?' + new URLSearchParams({
-      "owner" : user.value,
-      "accName" : pass.value,
-      "pin" : user.value,
+      "owner" : loggedInUser,
+      "name" : accName.value,
+      "pin" : pin.value,
     }), {method: 'POST'})
     .then((test) => test.json())
     .then((data) => {
-      checkLogin(data)
+      alert(data.message);
     });
   }
 </script>
