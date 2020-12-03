@@ -42,49 +42,28 @@
           <h1> Register Today</h1>
 
 
-          <form action = "Banking.html" method = "post">
-              <h3> Don't have an account?
-                Create your account today! </h3>
-              Please enter a username, password, and pin number to set up your account.
-              <br>
-              <br>
-              <b>Username:</b>
-              <input type = "text" name = "username">
-              <br>
-              <b>Password:</b>
-              <input type = "password" name = "password">
-              <br>
-              <b>Pin Number:</b>
-              <input type = "password" name = "pin">
-              <br>
-              <br>
-              <input type = "submit" value = "Register">
-        </form>
+          <h3> Don't have an account?
+            Create your account today! </h3>
+          <br>
+          Username:
+          <input type = "text" id = "username">
+          <br>
+          Password:
+          <input type = "password" id = "password">
+          <br>
+          Pin Number:
+          <input type = "password" id = "pin">
+          <br>
+          First Name:
+          <input type = "text" id = "first">
+          <br>
+          Last Name:
+          <input type= "text" id = "last">
+          <br>
+          <button onclick="createAcc()">Register</button>
         </div>
       </body>
       </center>
-=======
-    <h1> Register Today</h1>
-        <h3> Don't have an account?
-          Create your account today! </h3>
-        <br>
-        Username:
-        <input type = "text" id = "username">
-        <br>
-        Password:
-        <input type = "password" id = "password">
-        <br>
-        Pin Number:
-        <input type = "password" id = "pin">
-        <br>
-        First Name:
-        <input type = "text" id = "first">
-        <br>
-        Last Name:
-        <input type= "text" id = "last">
-        <br>
-        <button onclick="createAcc()">Register</button>
->>>>>>> 8f0a9afaa3dd3d14c86ac207bb9a18fb724e861f
     </body>
 
     <script>
@@ -108,8 +87,9 @@
 
     function registerSuccess(data){
       alert(data.message);
-      window.location.href = "Banking.html";
-      console.log("hey");
+      document.cookie = "user="+ username.value + "; path=/";
+      document.cookie = "loggedin=true; path=/";
+      window.location.href = "AccountManage.html";
     }
     </script>
 
