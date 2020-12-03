@@ -22,12 +22,17 @@
           for(var i = 0; i < cookArr.length; i++){
             var pair = cookArr[i].split("=");
             if(pair[0].trim() == "loggedin"){
-              if (pair[1].trim() == "false") {
+              if (pair[1].trim() != "true") {
                 alert("Error 404, Login not found. Please login again")
                 window.location.href = "Signin.html";
               }
-              else {
-                loadData()
+              else{
+                for(var j = 0; j < cookArr.length; j++){
+                  var pair2 = cookArr[j].split("=");
+                  if(pair2[0].trim() == "user"){
+                    getData(pair2[1].trim());
+                  }
+                }
               }
             }
           }
@@ -35,9 +40,19 @@
       </script>
       <body onload ="checkCookies()">
       <script>
+        async function getData(username){
+          console.log(username)
+          fetch('http://localhost:5000/users/accounts?' + new URLSearchParams({
+            "user" : username
+          }), {method: 'GET'})
+          .then((test) => test.json())
+          .then((data) => {
+            loadData(data)
+          });
+        }
 
-        function loadData(){
-
+        function loadData(data){
+          console.log(data)
         }
 
       </script>
