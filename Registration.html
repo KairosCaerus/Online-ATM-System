@@ -57,43 +57,50 @@
 
 
     <h1> Register Today</h1>
-
-    <form action = "Banking.html" method = "post">
         <h3> Don't have an account?
           Create your account today! </h3>
         <br>
         Username:
-        <input type = "text" name = "username">
+        <input type = "text" id = "username">
         <br>
         Password:
-        <input type = "password" name = "password">
+        <input type = "password" id = "password">
         <br>
         Pin Number:
-        <input type = "password" name = "pin">
+        <input type = "password" id = "pin">
         <br>
         First Name:
-        <input type = "text" name = "first">
+        <input type = "text" id = "first">
         <br>
         Last Name:
-        <input type = "password" name = "last">
+        <input type= "text" id = "last">
         <br>
         <button onclick="createAcc()">Register</button>
-
-      </form>
     </body>
 
     <script>
     async function createAcc(){
       fetch('http://localhost:5000/users/add?' + new URLSearchParams({
-        "user" : username.value,
-        "pass" : password.value,
+        "username" : username.value,
+        "password" : password.value,
         "firstname" : first.value,
         "lastname" : last.value,
         "pin" : pin.value
       }), {method: 'POST'})
       .then((test) => test.json())
       .then((data) => {
+        if (data.success){
+          registerSuccess(data);
+        }else{
+          alert(data.message);
+        }
       });
+    }
+
+    function registerSuccess(data){
+      alert(data.message);
+      window.location.href = "Banking.html";
+      console.log("hey");
     }
     </script>
 
