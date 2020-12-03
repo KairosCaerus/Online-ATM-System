@@ -52,11 +52,12 @@
         }
 
         function loadData(data){
-          console.log(data)
+          console.log(data);
+          document.getElementById("username").innerHTML = data[0]["owner"];
         }
 
       </script>
-
+      <body onload="loadData()">
 
       <center>
         <a href="Banking.html">
@@ -67,7 +68,7 @@
       </center>
         <body style="background-color:rgb(244, 226, 198)">
 
-        <h1> Your Account</h1>
+        <h1> Your Account: <span id="username"></span></h1>
         <script>
         alert("Welcome to Bank of Rona. Check out your account")
         </script>
