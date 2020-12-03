@@ -87,13 +87,17 @@
       <button onclick="withdraw()">Withdraw</button>
       <button onclick="transfer()">Transfer To Another Account</button>
       <button onclick="support()">Help & Support</button>
-<<<<<<< HEAD
+
       <button onclick="logOut()">Log Out</button>
       <br>
-
-=======
-      <button onclick="logout()">Log Out</button>
->>>>>>> 8f0a9afaa3dd3d14c86ac207bb9a18fb724e861f
+      <script>
+      function logOut(){
+        document.cookie = "loggedin=false; path=/"
+        document.cookie = "user=; path=/"
+        window.location.href = "homepage.html"
+        alert("You have been logged out.")
+      }
+      </script>
 
       <script src="Script.js"></script>
     </BODY>
