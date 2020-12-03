@@ -16,21 +16,24 @@
     </STYLE>
     </HEAD>
     <BODY>
-
-      <element onload ="checkCookies()">
       <script>
         function checkCookies() {
-          if (loggedin == false) {
-            alert("Error 404, Login not found. Please login again")
-            window.location.href = "Signin.html";
-          }
-          else {
-
+          var cookArr = document.cookie.split(';')
+          for(var i = 0; i < cookArr.length; i++){
+            var pair = cookArr[i].split("=");
+            if(pair[0].trim() == "loggedin"){
+              if (pair[1].trim() == "false") {
+                alert("Error 404, Login not found. Please login again")
+                window.location.href = "Signin.html";
+              }
+              else {
+                loadData()
+              }
+            }
           }
         }
       </script>
-
-      <element onload ="loadData()">
+      <body onload ="checkCookies()">
       <script>
 
         function loadData(){
