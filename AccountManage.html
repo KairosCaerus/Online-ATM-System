@@ -16,7 +16,7 @@
   <body style="background-color:rgb(244, 226, 198)">
 
   <br>
-  <h1 class ="custom">Managing Accounts</h1>
+  <h1 class ="custom">Account Summary:</h1>
 
   <script>
     function checkCookies() {
@@ -26,7 +26,7 @@
         if(pair[0].trim() == "loggedin"){
           if (pair[1].trim() != "true") {
             alert("Error 404, Login not found. Please login again")
-            window.location.href = "Signin.html";
+            window.location.href = "Homepage.html";
           }
           else{
             for(var j = 0; j < cookArr.length; j++){
@@ -52,7 +52,7 @@
         loadData(data);
       });
     }
-    
+
     function loadData(data){
       console.log(data);
       var col = [];
@@ -80,31 +80,19 @@
 
       var divContainer = dataTable;
       divContainer.innerHTML = "";
-      divContainer.appendChild(table);
+      if(table.rows.length === 1){
+        divContainer.innerHTML = "<h3>You currently have no open Accounts. Please open an account</h3>"
+      }
+      else{
+        divContainer.appendChild(table);
+      }
     }
     </script>
 
     <p id="dataTable"></p>
-
-  <div id="button"><a href="AccountOpen.html">Create a New Account</a></div>
-  <div id="button"><a href="AccountClose.html">Delete an Existing Account</a></div>
+  <button type="button" onclick="window.location.href = 'AccountOpen.html'" name="button">Open New Account</button>
+  <button type="button" onclick="window.location.href = 'AccountClose.html'" name="button">Close an Existing Account</button>
 
 </body>
-
-
-<!--- Hey I think the API is missing a delete account function
-<script>
-  async function deleteAccount(){
-    fetch('http://localhost:5000/users/login?' + new URLSearchParams({
-      "user" : user.value,
-      "pass" : pass.value
-    }), {method: 'GET'})
-    .then((test) => test.json())
-    .then((data) => {
-      checkLogin(data)
-    });
-  }
-</script>
--->
 
 </html>

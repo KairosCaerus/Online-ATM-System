@@ -100,7 +100,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
         if(pair[0].trim() == "loggedin"){
           if (pair[1].trim() != "true") {
             alert("Error 404, Login not found. Please login again")
-            window.location.href = "Signin.html";
+            window.location.href = "Homepage.html";
           }
           else{
             for(var j = 0; j < cookArr.length; j++){
@@ -144,21 +144,5 @@ body {font-family: Arial, Helvetica, sans-serif;}
     });
   }
 </script>
-
-
-<!--- Hey I think the API is missing a delete account function
-<script>
-  async function deleteAccount(){
-    fetch('http://localhost:5000/users/login?' + new URLSearchParams({
-      "user" : user.value,
-      "pass" : pass.value
-    }), {method: 'GET'})
-    .then((test) => test.json())
-    .then((data) => {
-      checkLogin(data)
-    });
-  }
-</script>
--->
 
 </html>
