@@ -53,7 +53,8 @@
 
         function loadData(data){
           console.log(data);
-          document.getElementById("username").innerHTML = data[1]["owner"];
+          document.getElementById("username").innerHTML = data[0]["owner"];
+          document.getElementById("bankingaccount").innerHTML = data[0]["owner"];
         }
 
       </script>
@@ -69,26 +70,16 @@
         <body style="background-color:rgb(244, 226, 198)">
 
         <h1> Your Account: <span id="username"></span></h1>
+        <script>
+        alert("Welcome to Bank of Rona. Check out your account")
+        </script>
 
 
         <p2> Personal Accounts</p2> <br>
     <table style="width:60%">
         <tbody><tr>
-          <th>Adv Plus Banking - 2356</th>
+          <th>Adv Plus Banking -  <span id="bankingaccount"></span> </th>
           <td>$233.78</td>
-
-
-
-        </tr>
-        <tr>
-          <th>Advantage Savings - 2366</th>
-          <td>$345.86</td>
-
-        </tr>
-        <tr>
-            <th>Cash Rewards World Mastercard Card - 3348</th>
-            <td>$0.00</td>
-        </tr>
       </tbody></table>
       <br>
       <button onclick="account()">Open Up New Account</button>
@@ -96,16 +87,8 @@
       <button onclick="transfer()">Transfer To Another Account</button>
       <br>
       <button onclick="support()">Help & Support</button>
-      <button onclick="logOut()">Log Out</button>
+      <button onclick="logout()">Log Out</button>
 
       <script src="Script.js"></script>
     </BODY>
-    <script>
-    function logOut(){
-      document.cookie = "loggedin=false; path=/"
-      document.cookie = "user=; path=/"
-      window.location.href = "homepage.html"
-      alert("You have been logged out.")
-    }
-    </script>
     </HTML>
