@@ -1,3 +1,24 @@
+<?php
+$conn = mysqli_connect("localhost","root","","users");
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+$sql = "INSERT INTO account(banking, savings, creditcard)
+VALUES (1000.00, 1000.00, 0.00)";
+
+if ($conn->query($sql) === TRUE) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+$sql = 'SELECT banking,savings,creditcard FROM account';
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$conn->close();
+?>
+
+
 <HTML>
     <HEAD>
     <TITLE> Balance</TITLE>
@@ -28,31 +49,21 @@
         <script>
         alert("Welcome to Bank of Rona. Check out your account")
         </script>
-      <?php
-        session_start();
-        $_SESSION['banking'] = 1000.00;
-        $_SESSION['savings'] = 1000.00;
-        $_SESSION['creditcard'] = 0.00;
-        $banking = 1000.00;
-        $savings = 1000.00;
-        $creditcard = 0.00;
-
-      ?>
         <h1 class ="custom">Balance and Statement</h1>
         <h4> Hello, User: </h4>
         <p2> Personal Accounts</p2> <br>
     <table style="width:60%">
         <tbody><tr>
           <th>Adv Plus Banking - 2356</th>
-          <td>$<?php echo $_SESSION['banking']?></td>
+          <td>$<?php echo $row["banking"]?></td>
         </tr>
         <tr>
           <th>Advantage Savings - 2366</th>
-          <td>$<?php echo $_SESSION['savings']?></td>
+          <td>$<?php echo $row["savings"]?></td>
         </tr>
         <tr>
             <th>Cash Rewards World Mastercard Card - 3348</th>
-            <td>$<?php echo $_SESSION['creditcard']?></td>
+            <td>$<?php echo $row["creditcard"]?></td>
         </tr>
       </tbody></table>
       <br>
@@ -68,4 +79,4 @@
       };
     </script>
     </BODY>
-    </HTML>
+</HTML>
