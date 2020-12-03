@@ -12,13 +12,32 @@
     <br>
     <h1> Deposit Check Here: </h1>
 
-    <form action="transfer.php">
-      <input type="file" id="myFile" name="filename">
-      <br>
-      <input type="submit">
-    </form>
+    <input type="file" id="myFile" name="filename">
 
-    
+    <br>
+    AccountID: <input type="text" id="AccountID">
+    <br>
+    Deposit Amount: <input type="text" id="amount">
+    <br>
+    <button type="button" onclick="depositCheck()" name="button">Deposit Check</button>
 
+</body>
+
+<script>
+  async function depositCheck(){
+    if(myFile.value != "" && parseInt(amount.value) > 0 && AccountID.value != ""){
+      var file = new FormData();
+      file.append("file", myFile.files[0])
+      fetch('http://localhost:5000/users/deposit?' + new URLSearchParams({
+        "to" : AccountID.value,
+        "amount" : amount.value
+      }), {method: 'POST', body: file})
+      .then((test) => test.json())
+      .then((data) => {
+        console.log(data.message)
+      });
+    }
+  }
+</script>
 
 </html>
