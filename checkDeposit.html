@@ -34,7 +34,7 @@
       }), {method: 'POST', body: file})
       .then((test) => test.json())
       .then((data) => {
-        console.log(data.message)
+        alert(data.message)
       });
     }
   }

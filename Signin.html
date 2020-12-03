@@ -41,7 +41,9 @@
   function checkLogin(data){
     alert(data[0].message);
     if (data[0].success){
-      window.location.href = "Banking.html";
+      document.cookie = "user="+ UserID.value + "; path=/";
+      document.cookie = "loggedin=true; path=/";
+      window.location.href = "ATMBanking.html";
     }
   }
   </script>
