@@ -5,9 +5,6 @@
     <title>User & Pin Entry</title>
 
     <link href="css/main.css" rel="stylesheet" type="text/css" />
-    <script src="http://ajx.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/plugins.js"></script>
-
 
   </head>
     <center>
@@ -28,6 +25,7 @@
       <button onclick="fetchLogin()">Submit</button>
       <script src="Script.js"></script>
   </body>
+
   <script>
   async function fetchLogin(){
     fetch('http://localhost:5000/atm/login?' + new URLSearchParams({

@@ -16,18 +16,32 @@
     </STYLE>
     </HEAD>
     <BODY>
-
-      <element onload ="checkCookies()">
-
+      <script>
+        function checkCookies() {
+          var cookArr = document.cookie.split(';')
+          for(var i = 0; i < cookArr.length; i++){
+            var pair = cookArr[i].split("=");
+            if(pair[0].trim() == "loggedin"){
+              if (pair[1].trim() == "false") {
+                alert("Error 404, Login not found. Please login again")
+                window.location.href = "Signin.html";
+              }
+              else {
+                loadData()
+              }
+            }
+          }
+        }
+      </script>
+      <body onload ="checkCookies()">
       <script>
 
-        function checkCookies() {
-          if (loggedin == false) {
-            window.location.href = "Signin.html";
-          }
+        function loadData(){
+
         }
 
       </script>
+
 
       <center>
         <a href="Banking.html">
@@ -65,7 +79,7 @@
       </tbody></table>
       <br>
       <button onclick="account()">Open Up New Account</button>
-  
+      <button onclick="billpay()">Pay Bills</button>
       <button onclick="transfer()">Transfer To Another Account</button>
       <br>
       <button onclick="support()">Help & Support</button>
