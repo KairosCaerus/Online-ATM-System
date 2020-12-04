@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>User & Pin Entry</title>
+
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <script srs = "script.js"></script>
+    <body style="background-color:rgb(244, 226, 198)">
+    <center>
+
+    <a href="Homepage.html">
+    <img src="BOR_Logo.png"
+     width="300" height="100"/> </a>
+     <br>
+     The Bank of Rona has proudly been serving customers since 2020.
+    </center>
+    <br>
+
+    </head>
+    <body>
+      <body>
+
+        <ul>
+          <li><a class="active" href="Homepage.html">Home</a></li>
+          <li><a href="ATMStart.html">Online ATM</a></li>
+          <li><a href="FAQ page v1.html">FAQ</a></li>
+
+        </ul>
+      </body>
+
+    <br>
+    <center><b><h2>Please enter your ID & Pin in the boxes below</<h2></b></center>
+    <hr><br><br><br><br>
+
+      <label for "UserID">ID:</label>
+      <input type="text" id="UserID" name="UserID"> <br><br>
+      <label for "PinNum">Pin:</label>
+      <input type="text" id="PinNum" name="PinNum"> <br><br>
+      <button onclick="fetchLogin()">Submit</button>
+      <script src="Script.js"></script>
+  </body>
+
+  <script>
+  async function fetchLogin(){
+    fetch('http://localhost:5000/atm/login?' + new URLSearchParams({
+      "user" : UserID.value,
+      "pin" : PinNum.value
+    }), {method: 'GET'})
+    .then((test) => test.json())
+    .then((data) => {
+      checkLogin(data)
+    });
+  }
+
+  function checkLogin(data){
+    alert(data[0].message);
+    if (data[0].success){
+      document.cookie = "user="+ UserID.value + "; path=/";
+      document.cookie = "loggedin=true; path=/";
+      window.location.href = "ATMBanking.html";
+    }
+  }
+  </script>
+
+</html>
